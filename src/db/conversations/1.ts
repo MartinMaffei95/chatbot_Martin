@@ -1,0 +1,38 @@
+export const conversation = [
+  {
+    from: 'Martin',
+    to: '0101BOT',
+    body: 'Hola! Necesito informacion sobre ventas',
+    type: 'TEXT',
+    date: '01/03/2023 14:44:22',
+    read: false,
+    send: true,
+  },
+  {
+    from: '0101BOT',
+    to: 'Martin',
+    body: 'Whatsapp ',
+    type: 'TEXT',
+    date: '01/03/2023 14:44:24',
+    read: false,
+    send: true,
+  },
+  {
+    from: '0101BOT',
+    to: 'Martin',
+    body: 'Telefono',
+    type: 'BUTTON',
+    date: '01/03/2023 14:44:24',
+    read: false,
+    send: true,
+  },
+  {
+    from: '0101BOT',
+    to: 'Martin',
+    body: 'Correo Electronico',
+    type: 'BUTTON',
+    date: '01/03/2023 14:44:24',
+    read: false,
+    send: true,
+  },
+];
