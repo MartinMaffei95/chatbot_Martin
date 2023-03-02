@@ -1,6 +1,12 @@
+// ==> REDUX TOOLKIT
 import { createSlice } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
+// ==> TS Interfaces
 import { Conversation } from '../../interfaces/Conversation.interface';
+import { Message } from '../../interfaces/Message.interface';
+// ==> Services
+import { postReqMessage } from '../../services/sendMessage';
+// ==> Mock messages for db -- USE THIS ONLY FOR DEVELOPMENT
 import { conversation } from '../../db/conversations/1';
 
 const initialState: Conversation = {
@@ -12,23 +18,23 @@ export const conversationSlice = createSlice({
   name: 'conversation',
   initialState,
   reducers: {
-    // increment: (state) => {
-    //   // Redux Toolkit allows us to write "mutating" logic in reducers. It
-    //   // doesn't actually mutate the state because it uses the Immer library,
-    //   // which detects changes to a "draft state" and produces a brand new
-    //   // immutable state based off those changes
-    //   state.value += 1;
-    // },
-    // decrement: (state) => {
-    //   state.value -= 1;
-    // },
-    // incrementByAmount: (state, action: PayloadAction<number>) => {
-    //   state.value += action.payload;
-    // },
+    // ##First display the message in the messagingBox & latter send to server.
+    sendMessage: (state, action: PayloadAction<Message>): void => {
+      value: state.messages.push(action.payload);
+      const res = postReqMessage(action.payload);
+    },
+    // ## Used for change the "send" attribute on the message | Try the effect with slow network connection
+    changeStatus: (state, action: PayloadAction<number>) => {
+      console.log(action.payload);
+      const fRes = state.messages.find(
+        (message) => message.id === action.payload
+      );
+      if (!fRes) return;
+      fRes.send = true;
+    },
   },
 });
 
-// Action creators are generated for each case reducer function
-// export const { increment, decrement, incrementByAmount } = conversationSlice.actions;
+export const { sendMessage, changeStatus } = conversationSlice.actions;
 
 export default conversationSlice.reducer;

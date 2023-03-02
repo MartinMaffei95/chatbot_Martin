@@ -1,7 +1,8 @@
 export const conversation = [
   {
+    id: 1,
     from: 'Martin',
-    to: '0101BOT',
+    to: '_SERVER',
     body: 'Hola! Necesito informacion sobre ventas',
     type: 'TEXT',
     date: '01/03/2023 14:44:22',
@@ -9,7 +10,8 @@ export const conversation = [
     send: true,
   },
   {
-    from: '0101BOT',
+    id: 2,
+    from: '_SERVER',
     to: 'Martin',
     body: 'Whatsapp ',
     type: 'TEXT',
@@ -18,7 +20,8 @@ export const conversation = [
     send: true,
   },
   {
-    from: '0101BOT',
+    id: 3,
+    from: '_SERVER',
     to: 'Martin',
     body: 'Telefono',
     type: 'BUTTON',
@@ -27,7 +30,8 @@ export const conversation = [
     send: true,
   },
   {
-    from: '0101BOT',
+    id: 4,
+    from: '_SERVER',
     to: 'Martin',
     body: 'Correo Electronico',
     type: 'BUTTON',

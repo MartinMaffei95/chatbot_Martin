@@ -1,11 +1,9 @@
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 import ChatComponent from './components/Container/ChatComponent.container';
 import Cookies from 'js-cookie';
 const App = () => {
-  const [count, setCount] = useState(0);
-
   useEffect(() => {
-    console.log('ASDASD');
+    // Recive data from SDK
     window.addEventListener('message', (dataIn: MessageEvent) => {
       try {
         const data = JSON.parse(dataIn.data) || { item: null, value: null };
@@ -20,14 +18,13 @@ const App = () => {
             sameSite: 'none',
             secure: true,
           });
-          // this.showChat = value;
         }
       } catch (error) {}
     });
   }, []);
 
   return (
-    <div className="">
+    <div className="overflow-hidden min-h-screen max-h-full min-w-screen max-w-screen ">
       <ChatComponent />
     </div>
   );
