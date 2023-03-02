@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import ChatComponent from './components/Container/ChatComponent.container';
-
+import Cookies from 'js-cookie';
 const App = () => {
   const [count, setCount] = useState(0);
 
@@ -15,11 +15,12 @@ const App = () => {
 
         if (item === 'connect_tenant' && value !== null) {
           console.log('=======>', value);
-          this.cookieService.put('chat_saas_id ==>', value, {
-            sameSite: 'non',
+
+          Cookies.set('chat_saas_id', value, {
+            sameSite: 'none',
             secure: true,
           });
-          this.showChat = value;
+          // this.showChat = value;
         }
       } catch (error) {}
     });
