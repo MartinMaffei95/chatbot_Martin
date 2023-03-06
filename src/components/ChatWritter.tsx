@@ -29,10 +29,10 @@ const ChatWritter = () => {
   };
 
   return (
-    <div className="bg-green-600 h-20 w-screen ">
+    <div className=" h-20 w-screen border-t-slate-400 border-2">
       <form className="flex h-full w-full items-center gap-2 justify-between p-2 ">
         <textarea
-          className="bg-slate-200 h-full rounded flex-1 resize-none"
+          className="bg-slate-400 h-full rounded flex-1 resize-none"
           autoFocus
           onChange={(e) => handleMessage(e)}
         />

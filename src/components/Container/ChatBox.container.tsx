@@ -7,7 +7,7 @@ const ChatBox = () => {
   const { messages } = useSelector((state: ReduxState) => state.conversation);
 
   return (
-    <div className="flex flex-col bg-slate-800 flex-1 py-2 px-4 gap-2 mb-20 h-screen overflow-y-scroll">
+    <div className="flex flex-col flex-1 py-2 px-4 gap-2 mb-20 h-screen overflow-y-scroll">
       {messages &&
         messages?.map((message) => (
           <ChatBubble key={message.id} message={message} />
