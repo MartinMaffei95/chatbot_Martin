@@ -9,11 +9,11 @@ export const toUnix = (timestamp?: number) => {
   return unix;
 };
 
-export const toDateString = (timestamp?: number | string) => {
+export const toDateString = (timestamp?: number) => {
   let date = dayjs();
   if (timestamp) {
-    date = dayjs(timestamp);
+    date = dayjs(timestamp * 1000);
   }
-  const parsedDate = date.format('L LT');
+  const parsedDate = date.format('HH:mm');
   return parsedDate;
 };

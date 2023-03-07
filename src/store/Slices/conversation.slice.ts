@@ -8,11 +8,10 @@ import { Message } from '../../interfaces/Message.interface';
 // ==> Services
 import { postReqMessage } from '../../services/sendMessage';
 // ==> Mock messages for db -- USE THIS ONLY FOR DEVELOPMENT
-import { conversation } from '../../db/conversations/1';
 
 const cleanState: Conversation = {
   id: '',
-  messages: conversation,
+  messages: [],
 };
 
 const savedConversation = (): Conversation | null => {
@@ -37,16 +36,6 @@ export const conversationSlice = createSlice({
       // => Save the message on localStorage
       saveConversation(state.id, state.messages);
     },
-    // ## deprectated for now
-    // Used for change the "send" attribute on the message | Try the effect with slow network connection
-    // changeStatus: (state, action: PayloadAction<number>) => {
-    //   console.log(action.payload);
-    //   const fRes = state.messages.find(
-    //     (message) => message.id === action.payload
-    //   );
-    //   if (!fRes) return;
-    //   fRes.send = true;
-    // },
   },
 });
 

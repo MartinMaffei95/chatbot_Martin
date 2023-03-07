@@ -3,6 +3,6 @@ export interface Message {
   body: string;
   source: string;
   actions?: null | [];
-  date: number | string;
+  date: number;
   type: string;
 }
