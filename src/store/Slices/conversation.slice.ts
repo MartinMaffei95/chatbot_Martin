@@ -30,12 +30,12 @@ export const conversationSlice = createSlice({
       postReqMessage(action.payload);
 
       // => Save the message on localStorage
-      saveConversation(state.id, state.messages);
+      // saveConversation(state.id, state.messages);
     },
     reciveMessage: (state, action: PayloadAction<Message>): void => {
       value: state.messages.push(action.payload);
       // => Save the message on localStorage
-      saveConversation(state.id, state.messages);
+      // saveConversation(state.id, state.messages);
     },
     // ## deprectated for now
     // Used for change the "send" attribute on the message | Try the effect with slow network connection
