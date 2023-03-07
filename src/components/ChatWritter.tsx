@@ -3,6 +3,7 @@ import { AiOutlineSend } from 'react-icons/ai';
 import { useDispatch } from 'react-redux';
 import { Message } from '../interfaces/Message.interface';
 import { sendMessage } from '../store/Slices/conversation.slice';
+import { toUnix } from '../utils/toUnix';
 const ChatWritter = () => {
   const dispatch = useDispatch();
 
@@ -17,13 +18,10 @@ const ChatWritter = () => {
   const send = () => {
     const messageObj: Message = {
       id: Math.round(Math.random() * 10000),
-      from: 'Martin',
-      to: VITE_APP_SERVER_NAME,
+      source: VITE_APP_SERVER_NAME,
       body: writeMessage,
       type: 'TEXT', //<<== TODO: Change this when have a better type of messaes (with actions or something)
-      date: Date.now(),
-      read: false,
-      send: false,
+      date: toUnix(),
     };
     dispatch(sendMessage(messageObj));
   };
@@ -37,7 +35,7 @@ const ChatWritter = () => {
           onChange={(e) => handleMessage(e)}
         />
         <button
-          className=" flex justify-center items-center rounded bg-slate-50 h-8 w-8 "
+          className="flex justify-center items-center rounded bg-slate-50 h-8 w-8 "
           type="submit"
           onClick={(e) => {
             e.preventDefault();

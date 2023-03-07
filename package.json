@@ -12,6 +12,7 @@
     "@reduxjs/toolkit": "^1.9.3",
     "@types/js-cookie": "^3.0.3",
     "@types/uuid": "^9.0.1",
+    "dayjs": "^1.11.7",
     "js-cookie": "^3.0.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
