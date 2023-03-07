@@ -15,14 +15,14 @@ const cleanState: Conversation = {
   messages: conversation,
 };
 
-const savedConversation = (): Conversation | null => {
-  if (!localStorage.getItem('conversation')) return null;
-  return JSON.parse(localStorage.getItem('conversation') as string);
-};
+// const savedConversation = (): Conversation | null => {
+//   if (!localStorage.getItem('conversation')) return null;
+//   return JSON.parse(localStorage.getItem('conversation') as string);
+// };
 
 export const conversationSlice = createSlice({
   name: 'conversation',
-  initialState: savedConversation() || cleanState,
+  initialState: cleanState,
   reducers: {
     // ## First display the message in the messagingBox & latter send to server.
     sendMessage: (state, action: PayloadAction<Message>): void => {
