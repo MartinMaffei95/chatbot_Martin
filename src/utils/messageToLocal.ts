@@ -1,4 +1,4 @@
-import { conversation } from './../db/conversations/1';
+import { addTime, isExpired } from './toUnix';
 import { Message } from '../interfaces/Message.interface';
 
 /*
@@ -11,17 +11,41 @@ import { Message } from '../interfaces/Message.interface';
     expirationDate <== or this date 
   }
 */
+
+const { VITE_APP_EXPIRATION_MS } = import.meta.env;
+export interface localConversationType {
+  id: string;
+  messages: Message[];
+  solved?: boolean;
+  timeToExpire: number; // => unix timestamp
+}
+
 export const saveConversation = (
   conversationId: string | undefined,
   messages: Message[]
 ): void => {
-  const conversation: object = {
+  const conversation: localConversationType = {
     id: conversationId || '',
     messages: messages,
     solved: false,
+    timeToExpire: addTime(VITE_APP_EXPIRATION_MS),
   };
 
   const conversationString = JSON.stringify(conversation);
   localStorage.setItem('conversation', conversationString);
   return;
+};
+
+export const deleteConversation = () => {
+  if (!localStorage.getItem('conversation')) return;
+  const conversation: localConversationType = JSON.parse(
+    localStorage.getItem('conversation') as string
+  );
+
+  // #if conversation is expired
+  if (isExpired(conversation.timeToExpire)) {
+    console.log('Delete conversation');
+
+    localStorage.removeItem('conversation');
+  }
 };
