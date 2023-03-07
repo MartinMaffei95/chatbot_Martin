@@ -15,11 +15,6 @@ const cleanState: Conversation = {
   messages: conversation,
 };
 
-// const savedConversation = (): Conversation | null => {
-//   if (!localStorage.getItem('conversation')) return null;
-//   return JSON.parse(localStorage.getItem('conversation') as string);
-// };
-
 export const conversationSlice = createSlice({
   name: 'conversation',
   initialState: cleanState,
@@ -27,26 +22,13 @@ export const conversationSlice = createSlice({
     // ## First display the message in the messagingBox & latter send to server.
     sendMessage: (state, action: PayloadAction<Message>): void => {
       value: state.messages.push(action.payload);
-      postReqMessage(action.payload);
-
-      // => Save the message on localStorage
-      // saveConversation(state.id, state.messages);
+      const res = postReqMessage(action.payload);
     },
     reciveMessage: (state, action: PayloadAction<Message>): void => {
       value: state.messages.push(action.payload);
       // => Save the message on localStorage
       // saveConversation(state.id, state.messages);
     },
-    // ## deprectated for now
-    // Used for change the "send" attribute on the message | Try the effect with slow network connection
-    // changeStatus: (state, action: PayloadAction<number>) => {
-    //   console.log(action.payload);
-    //   const fRes = state.messages.find(
-    //     (message) => message.id === action.payload
-    //   );
-    //   if (!fRes) return;
-    //   fRes.send = true;
-    // },
   },
 });
 
