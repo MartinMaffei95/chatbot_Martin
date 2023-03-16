@@ -16,15 +16,17 @@ const ChatWritter = () => {
   const textA = useRef<HTMLTextAreaElement>(null);
   // This function dispatch the send event of redux. First create the objects and later use
 
+  //ToDo: Agregar verificiacion de existencia de id en localstorage,
+  // en ncaso q exista usarilo encaso q no mandar vacio.
   const send = () => {
     if (!writeMessage || writeMessage.length <= 0)
       return console.log('el msg esta vacio');
     try {
       const messageObj: Message = {
-        id: Math.round(Math.random() * 10000),
-        source: VITE_APP_SERVER_NAME,
+        id: '',
+        sender: VITE_APP_SERVER_NAME,
         body: writeMessage,
-        type: 'TEXT', //<<== TODO: Change this when have a better type of messaes (with actions or something)
+        // type: 'TEXT', //<<== TODO: Change this when have a better type of messaes (with actions or something)
         date: toUnix(),
       };
       dispatch(sendMessage(messageObj));
