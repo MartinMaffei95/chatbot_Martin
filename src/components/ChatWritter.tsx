@@ -44,18 +44,19 @@ const ChatWritter = () => {
   };
 
   return (
-    <div className=" h-20 w-screen border-t-slate-400 border-2">
-      <form className="flex h-full w-full items-center gap-2 justify-between p-2 ">
+    <div className=" h-20 w-screen border-t-slate-200 border-2">
+      <form className="flex w-full h-full items-center gap-2 justify-between p-2 ">
         <textarea
           ref={textA}
-          className="bg-slate-400 h-full rounded flex-1 resize-none"
+          className="bg-slate-50 h-full rounded flex-1 resize-none pt-4 indent-2.5"
           autoFocus
           value={writeMessage}
           onChange={(e) => handleMessage(e)}
           onKeyDown={(e) => keyPressEnter(e)}
+          placeholder="Escriba su mensaje aquí"
         />
         <button
-          className="flex justify-center items-center rounded bg-slate-50 h-8 w-8 "
+          className="flex justify-center items-center rounded-full bg-slate-200 h-16 w-16 "
           type="submit"
           onClick={(e) => {
             e.preventDefault();
