@@ -33,6 +33,9 @@ export const conversationSlice = createSlice({
     },
     reciveMessage: (state, action: PayloadAction<Message>): void => {
       value: state.messages.push(action.payload);
+      value: state.id = action.payload.id;
+      // => Save the id in localStorage
+
       // => Save the message on localStorage
       saveConversation(state.id, state.messages);
     },

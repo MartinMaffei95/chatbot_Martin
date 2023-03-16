@@ -11,7 +11,7 @@ const ChatBubble = ({ message }: ChatBubbleType) => {
   return (
     <div
       className={`${
-        message?.source !== VITE_APP_SERVER_NAME
+        message?.sender !== VITE_APP_SERVER_NAME
           ? 'bg-slate-400 self-end text-slate-800 rounded-tr-3xl rounded-tl-3xl rounded-bl-3xl pl-6'
           : 'bg-blue-500 self-start text-neutral-50 rounded-tr-3xl rounded-tl-3xl rounded-br-3xl pr-6'
       }

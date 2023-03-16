@@ -1,9 +1,10 @@
 import { useState, ChangeEvent, KeyboardEvent, useRef } from 'react';
 import { AiOutlineSend } from 'react-icons/ai';
 import { useDispatch } from 'react-redux';
-import { Message } from '../interfaces/Message.interface';
+import { Conversation, Message } from '../interfaces';
 import { sendMessage } from '../store/Slices/conversation.slice';
 import { toUnix } from '../utils/toUnix';
+
 const ChatWritter = () => {
   const dispatch = useDispatch();
 
@@ -14,16 +15,19 @@ const ChatWritter = () => {
   };
   const { VITE_APP_SERVER_NAME } = import.meta.env;
   const textA = useRef<HTMLTextAreaElement>(null);
-  // This function dispatch the send event of redux. First create the objects and later use
 
-  //ToDo: Agregar verificiacion de existencia de id en localstorage,
-  // en ncaso q exista usarilo encaso q no mandar vacio.
+  // ## getting the id of conversation
+  const conv: Conversation = JSON.parse(
+    localStorage.getItem('conversation') as string
+  );
+
+  // This function dispatch the send event of redux. First create the objects and later use
   const send = () => {
     if (!writeMessage || writeMessage.length <= 0)
       return console.log('el msg esta vacio');
     try {
       const messageObj: Message = {
-        id: '',
+        id: conv?.id || '',
         sender: VITE_APP_SERVER_NAME,
         body: writeMessage,
         // type: 'TEXT', //<<== TODO: Change this when have a better type of messaes (with actions or something)
@@ -35,7 +39,7 @@ const ChatWritter = () => {
       console.log('el msg esta vacio');
     }
   };
-
+  // ## Send message with 'Enter'
   const keyPressEnter = (e: KeyboardEvent<HTMLTextAreaElement>) => {
     if ((e.code === 'Enter' || e.code === 'NumpadEnter') && !e.shiftKey) {
       e.preventDefault();

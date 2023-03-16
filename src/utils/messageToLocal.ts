@@ -36,6 +36,7 @@ export const saveConversation = (
   return;
 };
 
+// TODO: add logic for send a httpReq to api when delete conversation.
 export const deleteConversation = () => {
   if (!localStorage.getItem('conversation')) return;
   const conversation: localConversationType = JSON.parse(
