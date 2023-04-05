@@ -1,2 +1,0 @@
- <div className="text-5xl inset-0 pl-8 pt-6 font-['Jost'] absolute">¡Hola!</div>
-          <div className="text-3xl inset-0 pl-32 pt-20 font-['Jost'] absolute">Bienvenido a 1989</div>

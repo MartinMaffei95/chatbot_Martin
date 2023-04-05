@@ -12,7 +12,7 @@ const ChatBox = () => {
   return (
     <div
       ref={box}
-      className="flex flex-col flex-1 py-2 px-4 gap-2 mb-20 h-screen overflow-y-scroll pt-36"
+      className="flex flex-col py-2 px-4 gap-2 mb-20 overflow-y-scroll basis-full"
     >
       {messages &&
         messages?.map((message) => (
